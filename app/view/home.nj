@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PxBook</title>
+    <link rel="stylesheet" href="/public/frameworks/layui/css/layui.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/home.css">
+    <script src="/public/frameworks/layui/layui.js"></script>
+</head>
+<body>
+    <script type="text/html" id="screenTpl">
+        <span>{{ d.screen_width }} * {{ d.screen_height }}</span>
+    </script>
+    <h1 class="tx-c m-t-30">Top30 手机设备的屏幕信息</h1>
+    <div class="data-table">
+        <table class="layui-table" id="data_table">
+            <thead>
+                <tr>
+                    <th>厂商</th>
+                    <th>系列</th>
+                    <th>型号</th>
+                    <th>屏幕信息</th>
+                    <th>屏占比</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in devices %}
+                <tr>
+                    <td>{{ item.factory }}</td>
+                    <td>{{ item.serial }}</td>
+                    <td>{{ item.model }}</td>
+                    <td>{{ item.screen_width }} * {{ item.screen_height }}</td>
+                    <td>{{ item.rpx }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+layui.use('table', function() {
+    var table = layui.table;
+    
+    // TODO 获取前30名数据
+     /*
+     table.render({
+        elem: '#data_table',
+        data: datas,
+        cols: [
+            [{
+                title: '厂商',
+                field: 'factory'
+            },
+            {
+                title: '系列',
+                field: 'serial'
+            },
+            {
+                title: '型号',
+                field: 'model'
+            },
+            {
+                title: '屏幕信息',
+                templet: function(d){
+                    return d.screen_width +' * '+ d.screen_height
+                }
+            },
+            {
+                title: '屏占比',
+                field: 'rpx'
+            }]
+        ]
+    })*/
+})
+</script>
+</html>
